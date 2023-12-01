@@ -1,0 +1,17 @@
+{
+  "Pecas": [
+    {
+      "Id": "cd778c75-3754-497d-bfdf-3fbcac55323e",
+      "Nome": "Chave philips ATUALIZADO",
+      "Tipo": "FERRAMENTA",
+      "ExtensaoImagem": ".png",
+      "DataUltimaModificacao": "2023-11-30T20:45:33.149921-03:00",
+      "PropriedadesDinamicas": [
+        {
+          "Chave": "KEY1",
+          "Valor": "PROP1"
+        }
+      ]
+    }
+  ]
+}
