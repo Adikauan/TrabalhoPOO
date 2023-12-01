@@ -318,7 +318,6 @@
             btnUpdateImage.TabIndex = 52;
             btnUpdateImage.Text = "ALTERAR IMAGEM";
             btnUpdateImage.UseVisualStyleBackColor = false;
-            btnUpdateImage.Visible = false;
             btnUpdateImage.Click += btnUpdateImage_Click;
             // 
             // btnSave

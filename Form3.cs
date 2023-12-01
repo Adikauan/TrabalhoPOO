@@ -212,5 +212,32 @@ namespace Cadastro_de_peças
             return propriedadesDinamicas;
         }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            textName.Text = string.Empty;
+            textType.Text = string.Empty;
+            txtDynProp1_key.Text = string.Empty;
+            txtDynProp1_val.Text = string.Empty;
+            txtDynProp2_key.Text = string.Empty;
+            txtDynProp2_val.Text = string.Empty;
+            txtDynProp3_key.Text = string.Empty;
+            txtDynProp3_val.Text = string.Empty;
+
+            txtDynProp1_key.Visible = false;
+            txtDynProp1_val.Visible = false;
+            txtDynProp2_key.Visible = false;
+            txtDynProp2_val.Visible = false;
+            txtDynProp3_key.Visible = false;
+            txtDynProp3_val.Visible = false;
+
+            btnAdd2.Visible = false;
+            btnAdd3.Visible = false;
+
+            btnDel2.Visible = false;
+            btnDel3.Visible = false;
+            btnDel4.Visible = false;
+
+            pbxCreate.Image = null;
+        }
     }
 }

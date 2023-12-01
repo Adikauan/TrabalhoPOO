@@ -389,6 +389,7 @@
             Controls.Add(panel1_1);
             Name = "Form3";
             Text = "Form3";
+            Load += Form3_Load;
             ((System.ComponentModel.ISupportInitialize)pbxCreate).EndInit();
             panel3_1.ResumeLayout(false);
             panel3_1.PerformLayout();

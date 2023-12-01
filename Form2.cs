@@ -13,7 +13,7 @@ namespace Cadastro_de_peças
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            pbxVisualizer.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{pecaSelecionada.Id}.{pecaSelecionada.ExtensaoImagem}");
+            pbxVisualizer.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{pecaSelecionada.Id}{pecaSelecionada.ExtensaoImagem}");
             valName.Text = pecaSelecionada.Nome;
             valType.Text = pecaSelecionada.Tipo;
 

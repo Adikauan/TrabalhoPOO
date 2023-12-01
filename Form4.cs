@@ -7,7 +7,6 @@ namespace Cadastro_de_peças
     {
         private Peca pecaSelecionada;
         private string jsonListaPecas;
-        private string insertFilePath = string.Empty;
         public Form4(Peca? peca)
         {
             InitializeComponent();
@@ -170,7 +169,7 @@ namespace Cadastro_de_peças
                 return;
             }
 
-            FileInfo file; 
+            FileInfo file;
 
             string valueName = textName.Text;
             string valueType = textType.Text;
@@ -226,8 +225,6 @@ namespace Cadastro_de_peças
             {
                 string filePath = openFileDialog1.FileName;
                 pbxUpdate.Image = Image.FromFile(filePath);
-                btnUpdateImage.Visible = true;
-                insertFilePath = filePath;
             }
         }
 
@@ -239,7 +236,6 @@ namespace Cadastro_de_peças
             {
                 string filePath = openFileDialog1.FileName;
                 pbxUpdate.Image = Image.FromFile(filePath);
-                insertFilePath = filePath;
             }
         }
         private List<PropriedadeDinamica> CriaPropriedadesDinamicas()
