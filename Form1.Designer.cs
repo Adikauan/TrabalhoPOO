@@ -159,7 +159,7 @@
             // cbFiltro
             // 
             cbFiltro.FormattingEnabled = true;
-            cbFiltro.Items.AddRange(new object[] { "Nome", "Tipo", "Ultima Movimentação" });
+            cbFiltro.Items.AddRange(new object[] { "Nome", "Tipo" });
             cbFiltro.Location = new Point(870, 9);
             cbFiltro.Name = "cbFiltro";
             cbFiltro.Size = new Size(122, 23);

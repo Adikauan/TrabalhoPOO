@@ -139,7 +139,7 @@ namespace Cadastro_de_peças
 
                 if (peca.PropriedadesDinamicas.Count > 2)
                 {
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated    ));
+                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated));
                 }
             }
         }
@@ -181,7 +181,7 @@ namespace Cadastro_de_peças
             if (filtrarPor.Equals("Nome"))
                 pecasFiltradas.AddRange(pecas.Where(peca => peca.Nome == valor));
 
-            if(filtrarPor.Equals("Tipo"))
+            if (filtrarPor.Equals("Tipo"))
                 pecasFiltradas.AddRange(pecas.Where(peca => peca.Tipo == valor));
 
             if (string.IsNullOrEmpty(valor))
