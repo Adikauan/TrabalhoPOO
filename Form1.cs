@@ -3,7 +3,6 @@ using Cadastro_de_peças.Modelos.Interfaces;
 using Newtonsoft.Json;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Drawing.Printing;
 
 namespace Cadastro_de_peças
@@ -21,8 +20,6 @@ namespace Cadastro_de_peças
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<Peca> pecas;
-
             Data? listaPecas = LerLista();
 
             AtualizarLista(dataGridView1, listaPecas.Pecas);
