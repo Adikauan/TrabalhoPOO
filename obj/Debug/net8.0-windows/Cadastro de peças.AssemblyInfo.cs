@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cadastro de peças")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3134dbfb229c02764a6011b638c212eddc02883e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+352662c4fde99c63c5efc4929fd2f6788fb2a1ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cadastro de peças")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cadastro de peças")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

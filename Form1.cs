@@ -79,7 +79,6 @@ namespace Cadastro_de_peças
                 MessageBox.Show("Selecione um dado para alterar");
 
         }
-
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selectedRow = dataGridView1.SelectedRows;
@@ -108,7 +107,6 @@ namespace Cadastro_de_peças
 
             }
         }
-
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             string baseUrlImages = $"{Configuration.GetRootDirectory()}\\Imagens";
@@ -123,28 +121,28 @@ namespace Cadastro_de_peças
 
             foreach (var peca in listaPecas.Pecas)
             {
-                //e.Graphics.DrawImage(Image.FromFile($"{baseUrlImages}\\{peca.Id}{peca.ExtensaoImagem}"), new Point(baseValueX, baseValueY));
-                e.Graphics.DrawString($"Nome: {peca.Nome}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
-                e.Graphics.DrawString($"Tipo: {peca.Tipo}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 20 + baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
-                e.Graphics.DrawString($"Última movimentação: {peca.DataUltimaModificacao}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 40 + baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
+                var YCalculated = baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6));
+                e.Graphics.DrawImage(Image.FromFile($"{baseUrlImages}\\{peca.Id}{peca.ExtensaoImagem}"), new Rectangle(480, YCalculated, 50, 50));
+                e.Graphics.DrawString($"Nome: {peca.Nome}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, YCalculated));
+                e.Graphics.DrawString($"Tipo: {peca.Tipo}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 20 + YCalculated));
+                e.Graphics.DrawString($"Última movimentação: {peca.DataUltimaModificacao}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 40 + YCalculated));
 
                 if (peca.PropriedadesDinamicas.Count > 0)
                 {
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[0].Chave}: {peca.PropriedadesDinamicas[0].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
+                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[0].Chave}: {peca.PropriedadesDinamicas[0].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, YCalculated));
                 }
 
                 if (peca.PropriedadesDinamicas.Count > 1)
                 {
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[1].Chave}: {peca.PropriedadesDinamicas[1].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 20 + baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
+                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[1].Chave}: {peca.PropriedadesDinamicas[1].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 20 + YCalculated));
                 }
 
                 if (peca.PropriedadesDinamicas.Count > 2)
                 {
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6))));
+                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated    ));
                 }
             }
         }
-
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             printPreviewDialog1.Document = printDocument1;
@@ -153,7 +151,6 @@ namespace Cadastro_de_peças
 
             printPreviewDialog1.ShowDialog();
         }
-
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             try
@@ -168,7 +165,6 @@ namespace Cadastro_de_peças
 
             textPesquisar.Text = string.Empty;
         }
-
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             string filtrarPor = cbFiltro.Text;
@@ -193,7 +189,6 @@ namespace Cadastro_de_peças
 
             AtualizarLista(dataGridView1, pecasFiltradas);
         }
-
         public void AtualizarLista(DataGridView gridView, List<Peca> pecas)
         {
             gridView.DataSource = pecas;
@@ -206,7 +201,6 @@ namespace Cadastro_de_peças
             gridView.Columns["Tipo"].Width = 400;
             gridView.Columns["DataUltimaModificacao"].Width = 217;
         }
-
         public Data LerLista()
         {
             using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
