@@ -1,12 +1,14 @@
 using Cadastro_de_peças.Modelos;
+using Cadastro_de_peças.Modelos.Interfaces;
 using Newtonsoft.Json;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Printing;
 
 namespace Cadastro_de_peças
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IAcoesGerais
     {
         public Form1()
         {
@@ -20,21 +22,10 @@ namespace Cadastro_de_peças
         private void Form1_Load(object sender, EventArgs e)
         {
             List<Peca> pecas;
-            using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-            {
-                string json = r.ReadToEnd();
-                Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
-                pecas = listaPecas.Pecas;
-            }
-            dataGridView1.DataSource = pecas;
 
-            dataGridView1.Columns["DataUltimaModificacao"].HeaderText = "Última Modificação";
+            Data? listaPecas = LerLista();
 
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["ExtensaoImagem"].Visible = false;
-            dataGridView1.Columns["Nome"].Width = 500;
-            dataGridView1.Columns["Tipo"].Width = 400;
-            dataGridView1.Columns["DataUltimaModificacao"].Width = 217;
+            AtualizarLista(dataGridView1, listaPecas.Pecas);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -45,16 +36,14 @@ namespace Cadastro_de_peças
             {
                 string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-                using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-                {
-                    string json = r.ReadToEnd();
-                    Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
-                    Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
 
-                    this.Hide();
-                    Form2 form2 = new Form2(findPeca ?? new Peca());
-                    form2.Show();
-                }
+                Data? listaPecas = LerLista();
+                Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
+
+                this.Hide();
+                Form2 form2 = new Form2(findPeca ?? new Peca());
+                form2.Show();
+
             }
             else
             {
@@ -80,21 +69,18 @@ namespace Cadastro_de_peças
             {
                 string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-                using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-                {
-                    string json = r.ReadToEnd();
-                    Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
-                    Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
 
-                    this.Hide();
-                    Form4 form4 = new Form4(findPeca ?? new Peca());
-                    form4.Show();
-                }
+                Data? listaPecas = LerLista();
+                Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
+
+                this.Hide();
+                Form4 form4 = new Form4(findPeca ?? new Peca());
+                form4.Show();
+
             }
             else
-            {
                 MessageBox.Show("Selecione um dado para alterar");
-            }
+
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -110,25 +96,20 @@ namespace Cadastro_de_peças
                 {
                     string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-                    using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-                    {
-                        string json = r.ReadToEnd();
-                        Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
-                        listaPecas?.Pecas?.RemoveAll(peca => peca.Id == Guid.Parse(selectedRowId));
+                    Data? listaPecas = LerLista();
 
-                        serializedObject = JsonConvert.SerializeObject(listaPecas, Formatting.Indented);
-                    }
+                    listaPecas?.Pecas?.RemoveAll(peca => peca.Id == Guid.Parse(selectedRowId));
+
+                    serializedObject = JsonConvert.SerializeObject(listaPecas, Formatting.Indented);
+
                     File.WriteAllText(Configuration.GetListDataPath(), serializedObject);
 
                     Form1_Load(sender, e);
                 }
                 else
-                {
                     MessageBox.Show("Selecione um dado para excluir");
-                }
+
             }
-
-
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -197,12 +178,10 @@ namespace Cadastro_de_peças
             string valor = textFiltro.Text;
 
             List<Peca> pecas;
-            using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-            {
-                string json = r.ReadToEnd();
-                Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
-                pecas = listaPecas.Pecas;
-            }
+
+            Data? listaPecas = LerLista();
+
+            pecas = listaPecas.Pecas;
 
             List<Peca> pecasFiltradas = new List<Peca>();
 
@@ -215,15 +194,31 @@ namespace Cadastro_de_peças
             if (string.IsNullOrEmpty(valor))
                 pecasFiltradas.AddRange(pecas);
 
-            dataGridView1.DataSource = pecasFiltradas;
+            AtualizarLista(dataGridView1, pecasFiltradas);
+        }
 
-            dataGridView1.Columns["DataUltimaModificacao"].HeaderText = "Última Modificação";
+        public void AtualizarLista(DataGridView gridView, List<Peca> pecas)
+        {
+            gridView.DataSource = pecas;
 
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["ExtensaoImagem"].Visible = false;
-            dataGridView1.Columns["Nome"].Width = 500;
-            dataGridView1.Columns["Tipo"].Width = 400;
-            dataGridView1.Columns["DataUltimaModificacao"].Width = 217;
+            gridView.Columns["DataUltimaModificacao"].HeaderText = "Última Modificação";
+
+            gridView.Columns["Id"].Visible = false;
+            gridView.Columns["ExtensaoImagem"].Visible = false;
+            gridView.Columns["Nome"].Width = 500;
+            gridView.Columns["Tipo"].Width = 400;
+            gridView.Columns["DataUltimaModificacao"].Width = 217;
+        }
+
+        public Data LerLista()
+        {
+            using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
+            {
+                string json = r.ReadToEnd();
+                Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
+
+                return listaPecas;
+            }
         }
     }
 }
