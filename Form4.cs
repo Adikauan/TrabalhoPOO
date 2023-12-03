@@ -22,7 +22,7 @@ namespace Cadastro_de_peças
             if (pecaSelecionada.PropriedadesDinamicas.Count > 0)
             {
                 txtDynProp1_key.Text = pecaSelecionada.PropriedadesDinamicas[0].Chave;
-                txtDynProp1_val.Text = pecaSelecionada.PropriedadesDinamicas[0].Chave;
+                txtDynProp1_val.Text = pecaSelecionada.PropriedadesDinamicas[0].Valor;
                 txtDynProp1_key.Visible = true;
                 txtDynProp1_val.Visible = true;
                 btnAdd2.Visible = true;
@@ -32,7 +32,7 @@ namespace Cadastro_de_peças
             if (pecaSelecionada.PropriedadesDinamicas.Count > 1)
             {
                 txtDynProp2_key.Text = pecaSelecionada.PropriedadesDinamicas[1].Chave;
-                txtDynProp2_val.Text = pecaSelecionada.PropriedadesDinamicas[1].Chave;
+                txtDynProp2_val.Text = pecaSelecionada.PropriedadesDinamicas[1].Valor;
                 txtDynProp2_key.Visible = true;
                 txtDynProp2_val.Visible = true;
                 btnAdd3.Visible = true;
@@ -42,7 +42,7 @@ namespace Cadastro_de_peças
             if (pecaSelecionada.PropriedadesDinamicas.Count > 2)
             {
                 txtDynProp3_key.Text = pecaSelecionada.PropriedadesDinamicas[2].Chave;
-                txtDynProp3_val.Text = pecaSelecionada.PropriedadesDinamicas[2].Chave;
+                txtDynProp3_val.Text = pecaSelecionada.PropriedadesDinamicas[2].Valor;
                 txtDynProp3_key.Visible = true;
                 txtDynProp3_val.Visible = true;
                 btnDel4.Visible = true;
