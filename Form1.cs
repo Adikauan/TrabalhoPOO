@@ -46,9 +46,6 @@ namespace Cadastro_de_peças
             {
                 MessageBox.Show("Selecione um dado para alterar");
             }
-
-
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -65,7 +62,6 @@ namespace Cadastro_de_peças
             if (selectedRow.Count == 1)
             {
                 string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-
 
                 Data? listaPecas = LerLista();
                 Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
@@ -112,12 +108,7 @@ namespace Cadastro_de_peças
             string baseUrlImages = $"{Configuration.GetRootDirectory()}\\Imagens";
             int baseValueX = 10;
             int baseValueY = 10;
-            Data? listaPecas;
-            using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
-            {
-                string json = r.ReadToEnd();
-                listaPecas = JsonConvert.DeserializeObject<Data>(json);
-            }
+            Data? listaPecas = LerLista();
 
             foreach (Peca peca in listaPecas.Pecas)
             {
@@ -164,11 +155,9 @@ namespace Cadastro_de_peças
             string filtrarPor = cbFiltro.Text;
             string valor = textFiltro.Text;
 
-            List<Peca> pecas;
-
             Data? listaPecas = LerLista();
 
-            pecas = listaPecas.Pecas;
+            List<Peca> pecas = listaPecas.Pecas;
 
             List<Peca> pecasFiltradas = new List<Peca>();
 
