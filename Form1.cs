@@ -119,28 +119,22 @@ namespace Cadastro_de_peças
                 listaPecas = JsonConvert.DeserializeObject<Data>(json);
             }
 
-            foreach (var peca in listaPecas.Pecas)
+            foreach (Peca peca in listaPecas.Pecas)
             {
-                var YCalculated = baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6));
+                int YCalculated = baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6));
                 e.Graphics.DrawImage(Image.FromFile($"{baseUrlImages}\\{peca.Id}{peca.ExtensaoImagem}"), new Rectangle(480, YCalculated, 50, 50));
                 e.Graphics.DrawString($"Nome: {peca.Nome}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, YCalculated));
                 e.Graphics.DrawString($"Tipo: {peca.Tipo}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 20 + YCalculated));
                 e.Graphics.DrawString($"Última movimentação: {peca.DataUltimaModificacao}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 40 + YCalculated));
 
                 if (peca.PropriedadesDinamicas.Count > 0)
-                {
                     e.Graphics.DrawString($"{peca.PropriedadesDinamicas[0].Chave}: {peca.PropriedadesDinamicas[0].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, YCalculated));
-                }
 
                 if (peca.PropriedadesDinamicas.Count > 1)
-                {
                     e.Graphics.DrawString($"{peca.PropriedadesDinamicas[1].Chave}: {peca.PropriedadesDinamicas[1].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 20 + YCalculated));
-                }
 
                 if (peca.PropriedadesDinamicas.Count > 2)
-                {
                     e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated));
-                }
             }
         }
         private void pictureBox5_Click(object sender, EventArgs e)
