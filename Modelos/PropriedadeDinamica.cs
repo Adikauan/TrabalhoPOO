@@ -1,4 +1,4 @@
-﻿namespace Cadastro_de_peças.Modelos
+﻿namespace Cadastro_de_maquinas.Modelos
 {
     public class PropriedadeDinamica
     {

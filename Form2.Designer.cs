@@ -1,4 +1,4 @@
-﻿namespace Cadastro_de_peças
+﻿namespace Cadastro_de_maquinas
 {
     partial class Form2
     {
@@ -49,7 +49,7 @@
             // 
             // panel1_1
             // 
-            panel1_1.BackColor = Color.FromArgb(16, 83, 76);
+            panel1_1.BackColor = Color.FromArgb(77, 83, 83);
             panel1_1.BorderStyle = BorderStyle.FixedSingle;
             panel1_1.Dock = DockStyle.Top;
             panel1_1.Location = new Point(0, 0);
@@ -195,7 +195,7 @@
             // 
             // btnExit
             // 
-            btnExit.BackColor = Color.FromArgb(16, 83, 76);
+            btnExit.BackColor = Color.FromArgb(77, 83, 83);
             btnExit.Cursor = Cursors.Hand;
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);

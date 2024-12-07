@@ -1,11 +1,11 @@
-﻿namespace Cadastro_de_peças.Modelos
+﻿namespace Cadastro_de_maquinas.Modelos
 {
     public class Data
     {
-        public List<Peca>? Pecas {  get; set; } = new List<Peca>();
-        public Data(List<Peca>? pecas)
+        public List<Maquina>? Maquinas {  get; set; } = new List<Maquina>();
+        public Data(List<Maquina>? maquinas)
         {
-            Pecas = pecas;
+            Maquinas = maquinas;
         }
     }
 }

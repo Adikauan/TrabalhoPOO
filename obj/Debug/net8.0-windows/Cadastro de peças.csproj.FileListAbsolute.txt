@@ -62,6 +62,6 @@ C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de peças.runtimeco
 C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de peças.dll
 C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de peças.pdb
 C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
-C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de peças.csproj.CopyComplete
 C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de peças.genruntimeconfig.cache
 C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\ref\Cadastro de peças.dll
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro.9133C6DB.Up2Date

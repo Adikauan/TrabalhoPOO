@@ -1,48 +1,48 @@
-﻿using Cadastro_de_peças.Modelos;
+﻿using Cadastro_de_maquinas.Modelos;
 using Newtonsoft.Json;
 
-namespace Cadastro_de_peças
+namespace Cadastro_de_maquinas
 {
     public partial class Form4 : Form
     {
-        private Peca pecaSelecionada;
-        private string jsonListaPecas;
-        public Form4(Peca? peca)
+        private Maquina maquinaselecionada;
+        private string jsonlistaMaquinas;
+        public Form4(Maquina? maquina)
         {
             InitializeComponent();
-            this.pecaSelecionada = peca;
+            this.maquinaselecionada = maquina;
         }
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            pbxUpdate.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{pecaSelecionada.Id}{pecaSelecionada.ExtensaoImagem}");
-            textName.Text = pecaSelecionada.Nome;
-            textType.Text = pecaSelecionada.Tipo;
+            pbxUpdate.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{maquinaselecionada.Id}{maquinaselecionada.ExtensaoImagem}");
+            textName.Text = maquinaselecionada.Nome;
+            textType.Text = maquinaselecionada.Tipo;
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 0)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 0)
             {
-                txtDynProp1_key.Text = pecaSelecionada.PropriedadesDinamicas[0].Chave;
-                txtDynProp1_val.Text = pecaSelecionada.PropriedadesDinamicas[0].Valor;
+                txtDynProp1_key.Text = maquinaselecionada.PropriedadesDinamicas[0].Chave;
+                txtDynProp1_val.Text = maquinaselecionada.PropriedadesDinamicas[0].Valor;
                 txtDynProp1_key.Visible = true;
                 txtDynProp1_val.Visible = true;
                 btnAdd2.Visible = true;
                 btnDel2.Visible = true;
             }
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 1)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 1)
             {
-                txtDynProp2_key.Text = pecaSelecionada.PropriedadesDinamicas[1].Chave;
-                txtDynProp2_val.Text = pecaSelecionada.PropriedadesDinamicas[1].Valor;
+                txtDynProp2_key.Text = maquinaselecionada.PropriedadesDinamicas[1].Chave;
+                txtDynProp2_val.Text = maquinaselecionada.PropriedadesDinamicas[1].Valor;
                 txtDynProp2_key.Visible = true;
                 txtDynProp2_val.Visible = true;
                 btnAdd3.Visible = true;
                 btnDel3.Visible = true;
             }
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 2)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 2)
             {
-                txtDynProp3_key.Text = pecaSelecionada.PropriedadesDinamicas[2].Chave;
-                txtDynProp3_val.Text = pecaSelecionada.PropriedadesDinamicas[2].Valor;
+                txtDynProp3_key.Text = maquinaselecionada.PropriedadesDinamicas[2].Chave;
+                txtDynProp3_val.Text = maquinaselecionada.PropriedadesDinamicas[2].Valor;
                 txtDynProp3_key.Visible = true;
                 txtDynProp3_val.Visible = true;
                 btnDel4.Visible = true;
@@ -174,36 +174,36 @@ namespace Cadastro_de_peças
             string valueName = textName.Text;
             string valueType = textType.Text;
 
-            Peca peca;
+            Maquina maquina;
 
             if (!string.IsNullOrEmpty(openFileDialog1.FileName))
             {
                 file = new(openFileDialog1.FileName);
-                peca = new Peca(valueName, valueType, new List<PropriedadeDinamica>(), file.Extension);
-                file.CopyTo($"{imageRootDirectory}\\{peca.Id}{file.Extension}");
+                maquina = new Maquina(valueName, valueType, new List<PropriedadeDinamica>(), file.Extension);
+                file.CopyTo($"{imageRootDirectory}\\{maquina.Id}{file.Extension}");
             }
             else
             {
-                peca = new Peca(pecaSelecionada.Id, valueName, valueType, new List<PropriedadeDinamica>(), pecaSelecionada.ExtensaoImagem);
+                maquina = new Maquina(maquinaselecionada.Id, valueName, valueType, new List<PropriedadeDinamica>(), maquinaselecionada.ExtensaoImagem);
             }
 
             using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
             {
                 string json = r.ReadToEnd();
-                Data? listapecas = JsonConvert.DeserializeObject<Data>(json);
+                Data? listaMaquinas = JsonConvert.DeserializeObject<Data>(json);
 
-                listapecas.Pecas.RemoveAll(peca => peca.Id == pecaSelecionada.Id);
+                listaMaquinas.Maquinas.RemoveAll(maquina => maquina.Id == maquinaselecionada.Id);
 
-                peca.PropriedadesDinamicas.AddRange(CriaPropriedadesDinamicas());
+                maquina.PropriedadesDinamicas.AddRange(CriaPropriedadesDinamicas());
 
-                listapecas.Pecas.Add(peca);
+                listaMaquinas.Maquinas.Add(maquina);
 
-                string serializedObject = JsonConvert.SerializeObject(listapecas, Formatting.Indented);
+                string serializedObject = JsonConvert.SerializeObject(listaMaquinas, Formatting.Indented);
 
-                jsonListaPecas = serializedObject;
+                jsonlistaMaquinas = serializedObject;
             }
 
-            File.WriteAllText(Configuration.GetListDataPath(), jsonListaPecas);
+            File.WriteAllText(Configuration.GetListDataPath(), jsonlistaMaquinas);
 
             this.Close();
             Form1 form1 = new Form1();

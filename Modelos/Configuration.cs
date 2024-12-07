@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Cadastro_de_peças.Modelos
+namespace Cadastro_de_maquinas.Modelos
 {
     public static class Configuration
     {

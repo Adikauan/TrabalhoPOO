@@ -1,11 +1,11 @@
-using Cadastro_de_peças.Modelos;
-using Cadastro_de_peças.Modelos.Interfaces;
+using Cadastro_de_maquinas.Modelos;
+using Cadastro_de_maquinas.Modelos.Interfaces;
 using Newtonsoft.Json;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing.Printing;
 
-namespace Cadastro_de_peças
+namespace Cadastro_de_maquinas
 {
     public partial class Form1 : Form, IAcoesGerais
     {
@@ -14,15 +14,15 @@ namespace Cadastro_de_peças
             InitializeComponent();
 
         }
-        public void EnvioDataGrid(object peca)
+        public void EnvioDataGrid(object maquina)
         {
-            dataGridView1.DataSource = peca;
+            dataGridView1.DataSource = maquina;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Data? listaPecas = LerLista();
+            Data? listaMaquinas = LerLista();
 
-            AtualizarLista(dataGridView1, listaPecas.Pecas);
+            AtualizarLista(dataGridView1, listaMaquinas.Maquinas);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -34,11 +34,11 @@ namespace Cadastro_de_peças
                 string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
 
-                Data? listaPecas = LerLista();
-                Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
+                Data? listaMaquinas = LerLista();
+                Maquina? findMaquina = listaMaquinas.Maquinas.FirstOrDefault(maquina => maquina.Id == Guid.Parse(selectedRowId));
 
                 this.Hide();
-                Form2 form2 = new Form2(findPeca ?? new Peca());
+                Form2 form2 = new Form2(findMaquina ?? new Maquina());
                 form2.Show();
 
             }
@@ -63,11 +63,11 @@ namespace Cadastro_de_peças
             {
                 string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-                Data? listaPecas = LerLista();
-                Peca? findPeca = listaPecas.Pecas.FirstOrDefault(peca => peca.Id == Guid.Parse(selectedRowId));
+                Data? listaMaquinas = LerLista();
+                Maquina? findMaquinas = listaMaquinas.Maquinas.FirstOrDefault(maquina => maquina.Id == Guid.Parse(selectedRowId));
 
                 this.Hide();
-                Form4 form4 = new Form4(findPeca ?? new Peca());
+                Form4 form4 = new Form4(findMaquinas ?? new Maquina());
                 form4.Show();
 
             }
@@ -88,11 +88,10 @@ namespace Cadastro_de_peças
                 {
                     string? selectedRowId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-                    Data? listaPecas = LerLista();
+                    Data? listaMaquinas = LerLista();
+                    listaMaquinas?.Maquinas?.RemoveAll(maquina => maquina.Id == Guid.Parse(selectedRowId));
 
-                    listaPecas?.Pecas?.RemoveAll(peca => peca.Id == Guid.Parse(selectedRowId));
-
-                    serializedObject = JsonConvert.SerializeObject(listaPecas, Formatting.Indented);
+                    serializedObject = JsonConvert.SerializeObject(listaMaquinas, Formatting.Indented);
 
                     File.WriteAllText(Configuration.GetListDataPath(), serializedObject);
 
@@ -108,31 +107,32 @@ namespace Cadastro_de_peças
             string baseUrlImages = $"{Configuration.GetRootDirectory()}\\Imagens";
             int baseValueX = 10;
             int baseValueY = 10;
-            Data? listaPecas = LerLista();
+            Data? listaMaquinas = LerLista();
 
-            foreach (Peca peca in listaPecas.Pecas)
+            foreach (Maquina maquina in listaMaquinas.Maquinas)
             {
-                int YCalculated = baseValueY * (listaPecas.Pecas.IndexOf(peca) + 1 + (listaPecas.Pecas.IndexOf(peca) * 6));
-                e.Graphics.DrawImage(Image.FromFile($"{baseUrlImages}\\{peca.Id}{peca.ExtensaoImagem}"), new Rectangle(480, YCalculated, 50, 50));
-                e.Graphics.DrawString($"Nome: {peca.Nome}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, YCalculated));
-                e.Graphics.DrawString($"Tipo: {peca.Tipo}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 20 + YCalculated));
-                e.Graphics.DrawString($"Última movimentação: {peca.DataUltimaModificacao}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 40 + YCalculated));
+                int YCalculated = baseValueY * (listaMaquinas.Maquinas.IndexOf(maquina) + 1 + (listaMaquinas.Maquinas.IndexOf(maquina) * 6));
+                e.Graphics.DrawImage(Image.FromFile($"{baseUrlImages}\\{maquina.Id}{maquina.ExtensaoImagem}"), new Rectangle(480, YCalculated, 50, 50));
+                e.Graphics.DrawString($"Nome: {maquina.Nome}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, YCalculated));
+                e.Graphics.DrawString($"Tipo: {maquina.Tipo}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 20 + YCalculated));
+                e.Graphics.DrawString($"Última movimentação: {maquina.DataUltimaModificacao}", new Font("arial", 8), Brushes.Black, new Point(baseValueX, 40 + YCalculated));
 
-                if (peca.PropriedadesDinamicas.Count > 0)
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[0].Chave}: {peca.PropriedadesDinamicas[0].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, YCalculated));
+                if (maquina.PropriedadesDinamicas.Count > 0)
+                    e.Graphics.DrawString($"{maquina.PropriedadesDinamicas[0].Chave}: {maquina.PropriedadesDinamicas[0].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, YCalculated));
 
-                if (peca.PropriedadesDinamicas.Count > 1)
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[1].Chave}: {peca.PropriedadesDinamicas[1].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 20 + YCalculated));
+                if (maquina.PropriedadesDinamicas.Count > 1)
+                    e.Graphics.DrawString($"{maquina.PropriedadesDinamicas[1].Chave}: {maquina.PropriedadesDinamicas[1].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 20 + YCalculated));
 
-                if (peca.PropriedadesDinamicas.Count > 2)
-                    e.Graphics.DrawString($"{peca.PropriedadesDinamicas[2].Chave}: {peca.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated));
+                if (maquina.PropriedadesDinamicas.Count > 2)
+                    e.Graphics.DrawString($"{maquina.PropriedadesDinamicas[2].Chave}: {maquina.PropriedadesDinamicas[2].Valor}", new Font("arial", 8), Brushes.Black, new Point(300 + baseValueX, 40 + YCalculated));
+
             }
         }
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             printPreviewDialog1.Document = printDocument1;
 
-            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Imprimir peca", 600, 1000);
+            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Imprimir maquina", 600, 1000);
 
             printPreviewDialog1.ShowDialog();
         }
@@ -155,26 +155,26 @@ namespace Cadastro_de_peças
             string filtrarPor = cbFiltro.Text;
             string valor = textFiltro.Text;
 
-            Data? listaPecas = LerLista();
+            Data? listaMaquinas = LerLista();
 
-            List<Peca> pecas = listaPecas.Pecas;
+            List<Maquina> maquinas = listaMaquinas.Maquinas;
 
-            List<Peca> pecasFiltradas = new List<Peca>();
+            List<Maquina> maquinasFiltradas = new List<Maquina>();
 
             if (filtrarPor.Equals("Nome"))
-                pecasFiltradas.AddRange(pecas.Where(peca => peca.Nome == valor));
+                maquinasFiltradas.AddRange(maquinas.Where(maquina => maquina.Nome == valor));
 
             if (filtrarPor.Equals("Tipo"))
-                pecasFiltradas.AddRange(pecas.Where(peca => peca.Tipo == valor));
+                maquinasFiltradas.AddRange(maquinas.Where(maquina => maquina.Tipo == valor));
 
             if (string.IsNullOrEmpty(valor))
-                pecasFiltradas.AddRange(pecas);
+                maquinasFiltradas.AddRange(maquinas);
 
-            AtualizarLista(dataGridView1, pecasFiltradas);
+            AtualizarLista(dataGridView1, maquinasFiltradas);
         }
-        public void AtualizarLista(DataGridView gridView, List<Peca> pecas)
+        public void AtualizarLista(DataGridView gridView, List<Maquina> maquinas)
         {
-            gridView.DataSource = pecas;
+            gridView.DataSource = maquinas;
 
             gridView.Columns["DataUltimaModificacao"].HeaderText = "Última Modificação";
 
@@ -189,10 +189,15 @@ namespace Cadastro_de_peças
             using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
             {
                 string json = r.ReadToEnd();
-                Data? listaPecas = JsonConvert.DeserializeObject<Data>(json);
+                Data? listaMaquinas = JsonConvert.DeserializeObject<Data>(json);
 
-                return listaPecas;
+                return listaMaquinas;
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

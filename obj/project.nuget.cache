@@ -1,10 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "fOAN0AUZvFKDhesxQzxehu6nWau7D3ItF7oZSiTGT+r/0pptCZeLmVRpmsNM1ZK5JSJO2st1MjjlLvfQzmes8A==",
+  "dgSpecHash": "+uHFNvr5CwY=",
   "success": true,
-  "projectFilePath": "C:\\Estudos\\poo\\trabalhoPoo\\Cadastro de peças.csproj",
+  "projectFilePath": "C:\\Estudos\\poo\\trabalhoPoo\\Cadastro de maquinas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kauan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Você está executando a operação 'restore' com uma fonte 'HTTP', 'http://nmtwnseqiisdev.dcstara.com.br:82/nuget'. O acesso não HTTPS será removido em uma versão futura. Considere migrar para uma fonte 'HTTPS'."
+    }
+  ]
 }

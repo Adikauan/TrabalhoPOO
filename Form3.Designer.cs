@@ -1,4 +1,4 @@
-﻿namespace Cadastro_de_peças
+﻿namespace Cadastro_de_maquinas
 {
     partial class Form3
     {
@@ -81,7 +81,7 @@
             // 
             // panel1_1
             // 
-            panel1_1.BackColor = Color.FromArgb(16, 83, 76);
+            panel1_1.BackColor = Color.FromArgb(77, 83, 83);
             panel1_1.BorderStyle = BorderStyle.FixedSingle;
             panel1_1.Dock = DockStyle.Top;
             panel1_1.Location = new Point(0, 0);
@@ -104,13 +104,13 @@
             Label1_1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
             Label1_1.Location = new Point(12, 12);
             Label1_1.Name = "Label1_1";
-            Label1_1.Size = new Size(212, 25);
+            Label1_1.Size = new Size(219, 25);
             Label1_1.TabIndex = 0;
-            Label1_1.Text = "Cadastro de material";
+            Label1_1.Text = "Cadastro de Máquina";
             // 
             // btnCancel
             // 
-            btnCancel.BackColor = Color.FromArgb(16, 83, 76);
+            btnCancel.BackColor = Color.FromArgb(77, 83, 83);
             btnCancel.Cursor = Cursors.Hand;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -235,7 +235,7 @@
             // 
             // btnAdd1
             // 
-            btnAdd1.BackColor = Color.FromArgb(16, 83, 76);
+            btnAdd1.BackColor = Color.FromArgb(77, 83, 83);
             btnAdd1.Cursor = Cursors.Hand;
             btnAdd1.Image = (Image)resources.GetObject("btnAdd1.Image");
             btnAdd1.Location = new Point(900, 280);
@@ -249,7 +249,7 @@
             // 
             // btnAdd2
             // 
-            btnAdd2.BackColor = Color.FromArgb(16, 83, 76);
+            btnAdd2.BackColor = Color.FromArgb(77, 83, 83);
             btnAdd2.Cursor = Cursors.Hand;
             btnAdd2.Image = (Image)resources.GetObject("btnAdd2.Image");
             btnAdd2.Location = new Point(900, 340);
@@ -264,7 +264,7 @@
             // 
             // btnAdd3
             // 
-            btnAdd3.BackColor = Color.FromArgb(16, 83, 76);
+            btnAdd3.BackColor = Color.FromArgb(77, 83, 83);
             btnAdd3.Cursor = Cursors.Hand;
             btnAdd3.Image = (Image)resources.GetObject("btnAdd3.Image");
             btnAdd3.Location = new Point(900, 400);
@@ -279,7 +279,7 @@
             // 
             // btnDel2
             // 
-            btnDel2.BackColor = Color.FromArgb(16, 83, 76);
+            btnDel2.BackColor = Color.FromArgb(77, 83, 83);
             btnDel2.Cursor = Cursors.Hand;
             btnDel2.Image = (Image)resources.GetObject("btnDel2.Image");
             btnDel2.Location = new Point(960, 340);
@@ -294,7 +294,7 @@
             // 
             // btnDel3
             // 
-            btnDel3.BackColor = Color.FromArgb(16, 83, 76);
+            btnDel3.BackColor = Color.FromArgb(77, 83, 83);
             btnDel3.Cursor = Cursors.Hand;
             btnDel3.Image = (Image)resources.GetObject("btnDel3.Image");
             btnDel3.Location = new Point(960, 400);
@@ -309,7 +309,7 @@
             // 
             // btnDel4
             // 
-            btnDel4.BackColor = Color.FromArgb(16, 83, 76);
+            btnDel4.BackColor = Color.FromArgb(77, 83, 83);
             btnDel4.Cursor = Cursors.Hand;
             btnDel4.Image = (Image)resources.GetObject("btnDel4.Image");
             btnDel4.Location = new Point(960, 460);
@@ -324,7 +324,7 @@
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(16, 83, 76);
+            btnSave.BackColor = Color.FromArgb(77, 83, 83);
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -343,7 +343,7 @@
             // 
             // btnUpdateImage
             // 
-            btnUpdateImage.BackColor = Color.FromArgb(16, 83, 76);
+            btnUpdateImage.BackColor = Color.FromArgb(77, 83, 83);
             btnUpdateImage.Cursor = Cursors.Hand;
             btnUpdateImage.FlatStyle = FlatStyle.Flat;
             btnUpdateImage.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);

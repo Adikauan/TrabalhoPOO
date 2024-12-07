@@ -1,6 +1,8 @@
-﻿namespace Cadastro_de_peças.Modelos
+﻿using Cadastro_de_maquinas.Modelos.Interfaces;
+
+namespace Cadastro_de_maquinas.Modelos
 {
-    public class Peca
+    public class Maquina : IAcoesGerais
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }
@@ -9,7 +11,7 @@
         public DateTime DataUltimaModificacao { get; set; }
         public List<PropriedadeDinamica> PropriedadesDinamicas { get; set; } = new();
 
-        public Peca(string nome, string tipo, List<PropriedadeDinamica> propriedadesDinamicas, string fileExtension)
+        public Maquina(string nome, string tipo, List<PropriedadeDinamica> propriedadesDinamicas, string fileExtension)
         {
             Id = Guid.NewGuid();
             Nome = nome;
@@ -19,7 +21,7 @@
             ExtensaoImagem = fileExtension;
         }
 
-        public Peca(Guid id, string nome, string tipo, List<PropriedadeDinamica> propriedadesDinamicas, string extensaoImagem)
+        public Maquina(Guid id, string nome, string tipo, List<PropriedadeDinamica> propriedadesDinamicas, string extensaoImagem)
         {
             Id = id;
             Nome = nome;
@@ -29,9 +31,19 @@
             DataUltimaModificacao = DateTime.Now;
         }
 
-        public Peca()
+        public Maquina()
         {
             
+        }
+
+        public void AtualizarLista(DataGridView gridView, List<Maquina> maquinas)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Data LerLista()
+        {
+            throw new NotImplementedException();
         }
     }
 }

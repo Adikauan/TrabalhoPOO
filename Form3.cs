@@ -1,17 +1,18 @@
-﻿using Cadastro_de_peças.Modelos;
+﻿using Cadastro_de_maquinas.Modelos;
+using Cadastro_de_maquinas.Modelos.Interfaces;
 using Newtonsoft.Json;
 
-namespace Cadastro_de_peças
+namespace Cadastro_de_maquinas
 {
     public partial class Form3 : Form
     {
-        private string jsonListaPecas;
+        private string jsonlistaMaquinas;
         private string insertFilePath = string.Empty;
         public Form3()
         {
             InitializeComponent();
-
         }
+
         private void pbxCreate_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Arquivos de imagem|*.png;*.jpg;*.jpeg;|*.*|";
@@ -167,28 +168,28 @@ namespace Cadastro_de_peças
             string valueName = textName.Text;
             string valueType = textType.Text;
 
-            Peca peca = new Peca(valueName, valueType, new List<PropriedadeDinamica>(), file.Extension);
+            Maquina maquina = new Maquina(valueName, valueType, new List<PropriedadeDinamica>(), file.Extension);
 
             using (StreamReader r = new StreamReader(Configuration.GetListDataPath()))
             {
                 string json = r.ReadToEnd();
-                Data? listapecas = JsonConvert.DeserializeObject<Data>(json);
+                Data? listaMaquinas = JsonConvert.DeserializeObject<Data>(json);
 
-                peca.PropriedadesDinamicas.AddRange(CriaPropriedadesDinamicas());
+                maquina.PropriedadesDinamicas.AddRange(CriaPropriedadesDinamicas());
 
-                if (listapecas.Pecas is null)
-                    listapecas.Pecas = new List<Peca> { peca };
+                if (listaMaquinas.Maquinas is null)
+                    listaMaquinas.Maquinas = new List<Maquina> { maquina };
                 else
-                    listapecas.Pecas.Add(peca);
+                    listaMaquinas.Maquinas.Add(maquina);
 
-                string serializedObject = JsonConvert.SerializeObject(listapecas, Formatting.Indented);
+                string serializedObject = JsonConvert.SerializeObject(listaMaquinas, Formatting.Indented);
 
-                jsonListaPecas = serializedObject;
+                jsonlistaMaquinas = serializedObject;
             }
 
-            File.WriteAllText(Configuration.GetListDataPath(), jsonListaPecas);
+            File.WriteAllText(Configuration.GetListDataPath(), jsonlistaMaquinas);
 
-            file.CopyTo($"{imageRootDirectory}\\{peca.Id}{file.Extension}");
+            file.CopyTo($"{imageRootDirectory}\\{maquina.Id}{file.Extension}");
 
             this.Close();
             Form1 form1 = new Form1();

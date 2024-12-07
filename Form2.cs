@@ -1,42 +1,42 @@
-﻿using Cadastro_de_peças.Modelos;
+﻿using Cadastro_de_maquinas.Modelos;
 
-namespace Cadastro_de_peças
+namespace Cadastro_de_maquinas
 {
     public partial class Form2 : Form
     {
-        private Peca pecaSelecionada;
-        public Form2(Peca? peca)
+        private Maquina maquinaselecionada;
+        public Form2(Maquina? maquina)
         {
             InitializeComponent();
-            pecaSelecionada = peca;
+            maquinaselecionada = maquina;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            pbxVisualizer.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{pecaSelecionada.Id}{pecaSelecionada.ExtensaoImagem}");
-            valName.Text = pecaSelecionada.Nome;
-            valType.Text = pecaSelecionada.Tipo;
+            pbxVisualizer.Image = Image.FromFile($"{Configuration.GetRootDirectory()}\\Imagens\\{maquinaselecionada.Id}{maquinaselecionada.ExtensaoImagem}");
+            valName.Text = maquinaselecionada.Nome;
+            valType.Text = maquinaselecionada.Tipo;
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 0)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 0)
             {
-                keyProp1.Text = $"{pecaSelecionada.PropriedadesDinamicas[0].Chave}:";
-                valProp1.Text = pecaSelecionada.PropriedadesDinamicas[0].Valor;
+                keyProp1.Text = $"{maquinaselecionada.PropriedadesDinamicas[0].Chave}:";
+                valProp1.Text = maquinaselecionada.PropriedadesDinamicas[0].Valor;
                 keyProp1.Visible = true;
                 valProp1.Visible = true;
             }
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 1)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 1)
             {
-                keyProp2.Text = $"{pecaSelecionada.PropriedadesDinamicas[1].Chave}:";
-                valProp2.Text = pecaSelecionada.PropriedadesDinamicas[1].Valor;
+                keyProp2.Text = $"{maquinaselecionada.PropriedadesDinamicas[1].Chave}:";
+                valProp2.Text = maquinaselecionada.PropriedadesDinamicas[1].Valor;
                 keyProp2.Visible = true;
                 valProp2.Visible = true;
             }
 
-            if (pecaSelecionada.PropriedadesDinamicas.Count > 2)
+            if (maquinaselecionada.PropriedadesDinamicas.Count > 2)
             {
-                keyProp3.Text = $"{pecaSelecionada.PropriedadesDinamicas[2].Chave}:";
-                valProp3.Text = pecaSelecionada.PropriedadesDinamicas[2].Valor;
+                keyProp3.Text = $"{maquinaselecionada.PropriedadesDinamicas[2].Chave}:";
+                valProp3.Text = maquinaselecionada.PropriedadesDinamicas[2].Valor;
                 keyProp3.Visible = true;
                 valProp3.Visible = true;
             }

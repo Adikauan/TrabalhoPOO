@@ -1,4 +1,4 @@
-namespace Cadastro_de_peças
+namespace Cadastro_de_maquinas
 {
     internal static class Program
     {

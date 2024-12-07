@@ -1,0 +1,23 @@
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de maquinas.exe
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de maquinas.deps.json
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de maquinas.runtimeconfig.json
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de maquinas.dll
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Cadastro de maquinas.pdb
+C:\Estudos\poo\trabalhoPoo\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.csproj.AssemblyReference.cache
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.csproj.GenerateResource.cache
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.AssemblyInfoInputs.cache
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.AssemblyInfo.cs
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.csproj.CoreCompileInputs.cache
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.sourcelink.json
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro.25C629C6.Up2Date
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.dll
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\refint\Cadastro de maquinas.dll
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.pdb
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro de maquinas.genruntimeconfig.cache
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\ref\Cadastro de maquinas.dll
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form1.resources
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form2.resources
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form3.resources
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form4.resources
