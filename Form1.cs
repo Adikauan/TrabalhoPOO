@@ -14,7 +14,7 @@ namespace Cadastro_de_maquinas
             InitializeComponent();
 
         }
-        public void EnvioDataGrid(object maquina)
+        private void EnvioDataGrid(object maquina)
         {
             dataGridView1.DataSource = maquina;
         }
@@ -193,11 +193,6 @@ namespace Cadastro_de_maquinas
 
                 return listaMaquinas;
             }
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

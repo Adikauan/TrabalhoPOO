@@ -21,3 +21,4 @@ C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form1.r
 C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form2.resources
 C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form3.resources
 C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Form4.resources
+C:\Estudos\poo\trabalhoPoo\obj\Debug\net8.0-windows\Cadastro_de_maquinas.Properties.Resources.resources

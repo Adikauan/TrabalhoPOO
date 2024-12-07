@@ -82,7 +82,6 @@
             Label1.Size = new Size(209, 28);
             Label1.TabIndex = 0;
             Label1.Text = "Cadastro de material";
-            Label1.Click += Label1_Click;
             // 
             // panel2
             // 

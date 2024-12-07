@@ -1,8 +1,6 @@
-﻿using Cadastro_de_maquinas.Modelos.Interfaces;
-
-namespace Cadastro_de_maquinas.Modelos
+﻿namespace Cadastro_de_maquinas.Modelos
 {
-    public class Maquina : IAcoesGerais
+    public class Maquina
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }
@@ -34,16 +32,6 @@ namespace Cadastro_de_maquinas.Modelos
         public Maquina()
         {
             
-        }
-
-        public void AtualizarLista(DataGridView gridView, List<Maquina> maquinas)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Data LerLista()
-        {
-            throw new NotImplementedException();
         }
     }
 }
